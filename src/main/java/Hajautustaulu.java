@@ -26,8 +26,10 @@ public class Hajautustaulu<K, V> {
         }
    }
     return null;
-}
+    }
+    
     private ArrayList<Pari<K, V>> haeAvaimeenLittyvaLista(K avain) {
+        
     int hajautusArvo = Math.abs(avain.hashCode() % arvot.length);
     if (arvot[hajautusArvo] == null) {
         arvot[hajautusArvo] = new ArrayList<>();
@@ -35,8 +37,9 @@ public class Hajautustaulu<K, V> {
  
     return arvot[hajautusArvo];
 
-}
-public void lisaa(K avain, V arvo) {
+    }
+    
+    public void lisaa(K avain, V arvo) {
     
     ArrayList<Pari<K, V>> arvotIndeksissa = haeAvaimeenLittyvaLista(avain);
 
@@ -45,9 +48,10 @@ public void lisaa(K avain, V arvo) {
     
     if (1.0 * this.arvoja / this.arvot.length > 0.75) {
         kasvata();
-    }   
-}
-private void kasvata() {
+        }   
+    }
+    
+    private void kasvata() {
     
     ArrayList<Pari<K, V>>[] uusi = new ArrayList[this.arvot.length * 2];
  
@@ -56,9 +60,9 @@ private void kasvata() {
  
     }
     this.arvot = uusi;
-}
+    }
 
-private void kopioi(ArrayList<Pari<K, V>>[] uusi, int indeksista) {
+    private void kopioi(ArrayList<Pari<K, V>>[] uusi, int indeksista) {
     
     if (this.arvot[indeksista] != null){
 
@@ -71,11 +75,11 @@ private void kopioi(ArrayList<Pari<K, V>>[] uusi, int indeksista) {
         }
 
         uusi[hajautusarvo].add(arvo);
+            }
+        }
     }
-}
-
-}
-public V poista(K avain, V arvo) {
+    public V poista(K avain, V arvo) {
+        
     ArrayList<Pari<K, V>> arvotIndeksissa = haeAvaimeenLittyvaLista(avain);
     if (arvotIndeksissa.isEmpty()) {
         return null;
@@ -90,9 +94,10 @@ public V poista(K avain, V arvo) {
     arvotIndeksissa.remove(pari);
     return pari.getArvo();
 
-}
+    }
 
-private int haeArvonIndeksi(ArrayList<Pari<K, V>> lista, V arvo) {
+    private int haeArvonIndeksi(ArrayList<Pari<K, V>> lista, V arvo) {
+        
     for (int i = 0; i < lista.size(); i++) {
         if (lista.get(i).getArvo().equals(arvo)) {
             return i;
@@ -102,19 +107,23 @@ private int haeArvonIndeksi(ArrayList<Pari<K, V>> lista, V arvo) {
     return -1;
     
     }
+    
     public void listaa(K avain){
+        
     int hajautusArvo = Math.abs(avain.hashCode() % this.arvot.length);
+    
     if (this.arvot[hajautusArvo] == null) {
         System.out.println("Varasto "+avain+" on tyhjä");
     } 
         System.out.println("Varasto " +avain+ " sisältää:");
+        
     ArrayList<Pari<K, V>> arvotIndeksissa = this.arvot[hajautusArvo];
     for (int i = 0; i < arvotIndeksissa.size(); i++) {
         if (arvotIndeksissa.get(i).getAvain().equals(avain)) {
             System.out.println(arvotIndeksissa.get(i).getArvo());
             
+                }
             }
         }
     }
-}
 
